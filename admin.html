@@ -1,0 +1,213 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VighanHarta Admin Panel</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            color: #102541;
+        }
+
+        header {
+            background: #102541;
+            color: white;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #ff8c00;
+        }
+
+        header p {
+            margin-bottom: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 25px auto;
+            padding: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #ff8c00;
+            color: #102541;
+            padding: 12px 18px;
+            margin: 5px 5px 15px 0;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .panel {
+            background: white;
+            padding: 22px;
+            margin-top: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #00000012;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 11px;
+            margin-top: 6px;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>VighanHarta</h1>
+    <p>Manage Your Products</p>
+</header>
+
+<div class="container">
+
+    <a class="button" href="admin_orders.php">
+        Manage Customer Orders
+    </a>
+
+    <a class="button" href="used-mobile.php">
+        View Used Mobiles
+    </a>
+
+    <div class="panel">
+        <h2>Add New Product</h2>
+
+        <form id="productForm">
+
+            <label for="name">Product Name</label>
+            <input type="text" id="name" required>
+
+            <label for="category">Category</label>
+            <select id="category" required>
+                <option value="">Select Category</option>
+                <option value="accessory">Accessories</option>
+                <option value="used-mobile">Used Mobiles</option>
+                <option value="new-mobile">New Mobiles</option>
+            </select>
+
+            <label for="price">Price (₹)</label>
+            <input type="number" id="price" min="0.01"
+                   step="0.01" required>
+
+            <label for="stock">Stock Quantity</label>
+            <input type="number" id="stock" min="0"
+                   step="1" required>
+
+            <label for="description">Description</label>
+            <textarea id="description" rows="3"></textarea>
+
+            <label for="image">Product Image</label>
+            <input type="file" id="image"
+                   accept="image/*" required>
+
+            <button class="button" type="submit">
+                Save Product
+            </button>
+
+        </form>
+
+        <div id="message" class="message"></div>
+    </div>
+
+</div>
+
+<script>
+const form = document.getElementById("productForm");
+const message = document.getElementById("message");
+
+form.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const category = document.getElementById("category").value;
+    const price = Number(document.getElementById("price").value);
+    const stock = Number(document.getElementById("stock").value);
+    const description = document.getElementById("description").value.trim();
+    const imageFile = document.getElementById("image").files[0];
+
+    if (!name || !category || !imageFile ||
+        !Number.isFinite(price) || price <= 0 ||
+        !Number.isInteger(stock) || stock < 0) {
+        message.textContent = "Please enter valid product details.";
+        return;
+    }
+
+    if (imageFile.size > 1024 * 1024) {
+        message.textContent = "Image must be smaller than 1 MB.";
+        return;
+    }
+
+    const data = new FormData();
+    data.append("name", name);
+    data.append("category", category);
+    data.append("price", price);
+    data.append("stock", stock);
+    data.append("description", description);
+    data.append("image", imageFile);
+
+    message.textContent = "Saving product...";
+
+    try {
+        const response = await fetch("api_products.php", {
+            method: "POST",
+            body: data
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || result.success === false || result.error) {
+            throw new Error(result.message || result.error ||
+                            "Could not save product.");
+        }
+
+        message.textContent = result.message || "Product saved successfully!";
+        form.reset();
+
+    } catch (error) {
+        message.textContent =
+            "Error: " + error.message +
+            " Please check api_products.php.";
+    }
+});
+</script>
+
+</body>
+</html>

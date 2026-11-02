@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VighanHarta | Mobile Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#10243a">
+</head>
+
+<body>
+
+<header>
+    <h1>📱 VighanHarta</h1>
+    <p>Your Trusted Mobile Shop & Repairing Center</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="used-mobile.php">Used Mobile</a>
+    <a href="new-mobile.php">New Mobile</a>
+    <a href="sell.php">Sell Mobile</a>
+    <a href="repair.html">Repairing</a>
+    <a href="accessories.html">Accessories</a>
+    <a href="card.html">My Cart</a>
+    <a href="contact.html">Contact</a>
+     <a href="login.php">Login</a>
+    <a href="customer_logout.php">></a>
+</nav>
+
+<section class="hero" id="home">
+    <h2>Welcome to VighanHarta</h2>
+
+    <p>
+        Buy and Sell Old Mobiles, Repair Your Phone
+        and Explore Quality Accessories.
+    </p>
+
+    <a href="#buy" class="btn">Explore Products</a>
+    <a href="#contact" class="btn">Contact Us</a>
+</section>
+
+<section id="buy">
+    <h2>📱 Buy Mobile Phones</h2>
+
+    <div class="services">
+
+        <div class="card">
+            <h3>Android Phones</h3>
+            <p>Explore Android phones at affordable prices.</p>
+            <a href="#contact" class="btn">Enquire Now</a>
+        </div>
+
+        <div class="card">
+            <h3>iPhones</h3>
+            <p>Contact us to enquire about available iPhones.</p>
+            <a href="#contact" class="btn">Enquire Now</a>
+        </div>
+
+        <div class="card">
+            <h3>Old Mobiles</h3>
+            <p>Looking for a second-hand mobile? Contact us.</p>
+            <a href="#contact" class="btn">Enquire Now</a>
+        </div>
+
+    </div>
+</section>
+
+<section id="sell">
+    <h2>💰 Sell Your Old Mobile</h2>
+
+    <div class="card" style="margin:auto;">
+        <p>Want to sell your old phone? Contact our shop for details.</p>
+        <a href="sell.php" class="btn">Sell Your Mobile</a>
+    </div>
+</section>
+
+<section id="repair">
+    <h2>🔧 Mobile Repairing Services</h2>
+
+    <div class="services">
+
+        <div class="card">
+            <h3>Display Repair</h3>
+            <p>Display and screen replacement enquiries.</p>
+        </div>
+
+        <div class="card">
+            <h3>Battery Repair</h3>
+            <p>Battery-related problems and replacement enquiries.</p>
+        </div>
+
+        <div class="card">
+            <h3>Android & iPhone</h3>
+            <p>Contact us for Android and iPhone repair services.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="accessories">
+    <h2>🎧 Mobile Accessories</h2>
+
+    <div class="services">
+
+        <div class="card">
+            <h3>Headphones</h3>
+            <p>Explore headphone and earphone options.</p>
+        </div>
+
+        <div class="card">
+            <h3>Chargers & Cables</h3>
+            <p>Ask us about chargers, cables and adapters.</p>
+        </div>
+
+        <div class="card">
+            <h3>Other Accessories</h3>
+            <p>Enquire about mobile covers and other electronics.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact">
+    <h2>📞 Contact VighanHarta</h2>
+
+    <div class="card" style="margin:auto;">
+        <p><strong>Mobile:</strong>7030021688<br>7709922963</p>
+        <p><strong>Address:</strong>Vighanharta mobile shop selu,
+Near market comity mondha.
+431503</p>
+
+        <p>Contact us for product availability and repair enquiries.</p>
+
+        <a href="contact.html" class="btn">Contact Details</a>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 VighanHarta. All Rights Reserved.</p>
+    <p>Mobile Buy | Sell | Repairing | Accessories</p>
+</footer>
+    <script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function() {
+        navigator.serviceWorker.register("/service-worker.js")
+            .then(function() {
+                console.log("ViganHarta App Ready");
+            })
+            .catch(function(error) {
+                console.log("App Error:", error);
+            });
+    });
+}
+</script>
+</body>
+</html>    

@@ -1,0 +1,490 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mobile Repairing | VighanHarta</title>
+
+     <style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #263247;
+    line-height: 1.6;
+}
+
+header {
+    background: #101d35;
+    color: white;
+    text-align: center;
+    padding: 24px 15px;
+}
+
+header h1 {
+    color: #ff8c00;
+    margin: 0;
+    font-size: 34px;
+    letter-spacing: 1px;
+}
+
+header p {
+    margin: 5px 0 0;
+    color: #e5eaf2;
+}
+
+nav {
+    background: #172944;
+    padding: 15px 10px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px 12px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ff8c00;
+}
+
+.hero {
+    background: linear-gradient(135deg, #101d35, #24466f);
+    color: white;
+    text-align: center;
+    padding: 75px 20px;
+}
+
+.hero h2 {
+    font-size: 38px;
+    margin: 0 0 12px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #e5eaf2;
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 35px 20px;
+}
+
+.container > h2 {
+    color: #101d35;
+    font-size: 30px;
+    margin-bottom: 28px;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    background: white;
+    padding: 28px 22px;
+    text-align: center;
+    border-radius: 14px;
+    border: 1px solid #e5eaf2;
+    box-shadow: 0 5px 18px rgba(16, 29, 53, 0.07);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(16, 29, 53, 0.13);
+}
+
+.card h3 {
+    color: #101d35;
+    margin: 12px 0;
+    font-size: 20px;
+}
+
+.card p {
+    color: #667085;
+    font-size: 15px;
+}
+
+.icon {
+    font-size: 45px;
+    margin-bottom: 8px;
+}
+
+.contact {
+    text-align: center;
+    background: white;
+    padding: 35px 20px;
+    border-radius: 14px;
+    border: 1px solid #e5eaf2;
+    box-shadow: 0 5px 18px rgba(16, 29, 53, 0.07);
+    margin-top: 40px;
+}
+
+.contact h2 {
+    color: #101d35;
+    font-size: 28px;
+}
+
+.btn {
+    display: inline-block;
+    background: #ff8c00;
+    color: white;
+    padding: 13px 25px;
+    text-decoration: none;
+    border-radius: 7px;
+    margin-top: 12px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background: #e87900;
+    transform: translateY(-2px);
+}
+
+#repairForm input,
+#repairForm select,
+#repairForm textarea {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    border: 1px solid #ccd4e0;
+    border-radius: 7px;
+    background: #fff;
+}
+
+#repairForm input:focus,
+#repairForm select:focus,
+#repairForm textarea:focus {
+    outline: 2px solid #ffb347;
+    border-color: #ff8c00;
+}
+
+#repairForm p {
+    margin: 15px 0;
+}
+
+footer {
+    background: #101d35;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 35px;
+}
+
+footer p {
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 29px;
+    }
+
+    nav a {
+        margin: 6px;
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 55px 18px;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .container {
+        padding: 25px 15px;
+    }
+
+    .container > h2 {
+        font-size: 25px;
+    }
+
+    .services {
+        grid-template-columns: 1fr;
+    }
+
+    .contact {
+        padding: 25px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>VighanHarta</h1>
+    <p>Buy • Sell • Repair</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="sell.php">Sell Mobile</a>
+    <a href="repair.html">Repairing</a>
+    <a href="login.php">Login</a>
+</nav>
+
+<section class="hero">
+    <h2>Professional Mobile Repairing</h2>
+    <p>Reliable Repair Services for Android and iPhone</p>
+    <a href="#services" class="btn">Explore Services</a>
+</section>
+
+<div class="container" id="services">
+
+    <h2 style="text-align:center;">Our Repairing Services</h2>
+
+    <div class="services">
+
+        <div class="card">
+            <div class="icon">📱</div>
+            <h3>Screen Replacement</h3>
+            <p>Repair or replacement for damaged mobile screens.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔋</div>
+            <h3>Battery Replacement</h3>
+            <p>Battery checking and replacement services.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔌</div>
+            <h3>Charging Problems</h3>
+            <p>Solutions for charging ports and charging issues.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔊</div>
+            <h3>Speaker & Microphone</h3>
+            <p>Repair services for sound and microphone problems.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⚙️</div>
+            <h3>Software Problems</h3>
+            <p>Help with software errors and system issues.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🍎</div>
+            <h3>Android & iPhone</h3>
+            <p>Repair enquiries for different mobile brands.</p>
+        </div>
+
+    </div>
+<div class="contact">
+        <h2>Book a Repair Enquiry</h2>
+        <p>Tell us about your mobile problem. Our shop will help you.</p>
+
+    <div style="text-align:center; margin:25px 0;">
+    <a href="#repairForm"
+       style="display:inline-block; background:#ff8c00; color:white;
+       padding:14px 28px; border-radius:8px; text-decoration:none;
+       font-weight:bold;">
+        Book a Repair
+    </a>
+</div>    
+<form id="repairForm">
+            <p>
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Your Full Name"
+                    required
+                    style="width:100%;max-width:450px;padding:12px;"
+                >
+            </p>
+
+            <p>
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="10-digit Mobile Number"
+                    pattern="[6-9][0-9]{9}"
+                    maxlength="10"
+                    required
+                    style="width:100%;max-width:450px;padding:12px;"
+                >
+            </p>
+
+            <p>
+                <input
+                    type="text"
+                    id="mobileModel"
+                    placeholder="Mobile Brand and Model"
+                    required
+                    style="width:100%;max-width:450px;padding:12px;"
+                >
+            </p>
+
+            <p>
+                <select
+                    id="repairProblem"
+                    required
+                    style="width:100%;max-width:475px;padding:12px;"
+                >
+                    <option value="">Select Mobile Problem</option>
+                    <option>Screen Damage</option>
+                    <option>Battery Problem</option>
+                    <option>Charging Problem</option>
+                    <option>Speaker or Microphone Problem</option>
+                    <option>Software Problem</option>
+                    <option>Other Problem</option>
+                </select>
+            </p>
+
+            <p>
+                <textarea
+                    id="problemDetails"
+                    placeholder="Describe your mobile problem"
+                    rows="4"
+                    style="width:100%;max-width:450px;padding:12px;"
+                ></textarea>
+            </p>
+
+            <button type="submit" class="btn"
+                    style="border:none;cursor:pointer;">
+                Send Repair Enquiry
+            </button>
+        </form>
+    </div>
+    <div class="contact">
+        <h2>Need Mobile Repair?</h2>
+        <p>Contact our shop to enquire about your mobile problem and repair cost.</p>
+
+        <!-- Replace 91XXXXXXXXXX with your WhatsApp number -->
+        <a class="btn"
+           href="https://wa.me/917030021688"
+           target="_blank">
+           Contact on WhatsApp
+        </a>
+    </div>
+
+    <p style="text-align:center;">
+        <a href="index.html">← Back to Home</a>
+    </p>
+
+</div>
+
+<footer>
+    <p>© 2026 VighanHarta. All Rights Reserved.</p>
+</footer>
+<script>
+const SHOP_WHATSAPP = "917030021688";
+
+document.getElementById("repairForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("customerName").value.trim();
+    const phone = document.getElementById("customerPhone").value.trim();
+    const model = document.getElementById("mobileModel").value.trim();
+    const problem = document.getElementById("repairProblem").value;
+    const details = document.getElementById("problemDetails").value.trim();
+
+    const message =
+        "Hello VighanHarta! I want to enquire about mobile repairing.\n\n" +
+        "Customer Name: " + name + "\n" +
+        "Customer Phone: " + phone + "\n" +
+        "Mobile Model: " + model + "\n" +
+        "Problem: " + problem + "\n" +
+        "Details: " + (details || "Not provided");
+
+    const whatsappURL =
+        "https://wa.me/" + SHOP_WHATSAPP +
+        "?text=" + encodeURIComponent(message);
+
+    window.open(whatsappURL, "_blank");
+});
+</script>
+<section class="reviews" style="padding:40px 20px;text-align:center;background:#f4f6f9;">
+    <h2 style="color:#102541;">Customer Reviews</h2>
+    <p style="color:#555;">Your feedback helps us improve our service.</p>
+
+    <div style="max-width:700px;margin:25px auto;display:flex;flex-wrap:wrap;gap:20px;justify-content:center;">
+
+        <div style="background:white;padding:20px;border-radius:12px;flex:1;min-width:220px;box-shadow:0 3px 12px #ddd;">
+            <h3 style="color:#ff8c00;">Quality Service</h3>
+            <p>We aim to provide reliable mobile repairing services.</p>
+        </div>
+
+        <div style="background:white;padding:20px;border-radius:12px;flex:1;min-width:220px;box-shadow:0 3px 12px #ddd;">
+            <h3 style="color:#ff8c00;">Customer Support</h3>
+            <p>Contact us for repair enquiries and service information.</p>
+        </div>
+
+    </div>
+</section>
+<section style="padding:40px 20px;text-align:center;background:white;">
+    <h2 style="color:#102541;">Why Choose VighanHarta?</h2>
+    <p style="color:#555;">Your trusted partner for mobile care.</p>
+
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-top:25px;">
+
+        <div style="background:#f4f6f9;padding:20px;border-radius:10px;flex:1;min-width:200px;max-width:250px;">
+            <h3 style="color:#ff8c00;">🔧 Repair Services</h3>
+            <p>Support for common Android and iPhone problems.</p>
+        </div>
+
+        <div style="background:#f4f6f9;padding:20px;border-radius:10px;flex:1;min-width:200px;max-width:250px;">
+            <h3 style="color:#ff8c00;">📱 Multiple Devices</h3>
+            <p>Mobile repair enquiries for different brands and models.</p>
+        </div>
+
+        <div style="background:#f4f6f9;padding:20px;border-radius:10px;flex:1;min-width:200px;max-width:250px;">
+            <h3 style="color:#ff8c00;">💬 Easy Contact</h3>
+            <p>Contact our shop through WhatsApp for enquiries.</p>
+        </div>
+
+    </div>
+</section>
+<section style="padding:40px 20px;text-align:center;background:#f4f6f9;">
+    <h2 style="color:#102541;">Visit Our Shop</h2>
+    <p>Visit VighanHarta for mobile repairing enquiries.</p>
+
+    <div style="background:white;padding:25px;border-radius:12px;
+                max-width:600px;margin:20px auto;">
+        <h3 style="color:#ff8c00;">VighanHarta Mobile Shop</h3>
+        <p><strong>Address:</strong>Vighnaharta mobile shop selu, Near market comity mondha. 431503</p>
+        <p><strong>Service:</strong> Android & iPhone Repairing</p>
+        <p><strong>Visit:</strong> In-store service</p>
+    </div>
+</section>
+<div style="text-align:center; padding:25px;">
+    <a href="index.html"
+       style="display:inline-block;
+       background:#102541;
+       color:white;
+       padding:12px 25px;
+       border-radius:8px;
+       text-decoration:none;
+       font-weight:bold;">
+        ← Back to Home
+    </a>
+</div>
+</body>
+</html>

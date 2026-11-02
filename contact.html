@@ -1,0 +1,96 @@
+
+  
+<!-- CONTACT US SECTION -->
+<section class="section contact-section" id="contact">
+
+    <div class="section-heading">
+        <p class="small-title">CONTACT US</p>
+
+        <h2>Get a Free Quote</h2>
+
+        <p>
+            Tell us what you need and our team will contact you.
+        </p>
+    </div>
+
+    <div class="form-box">
+
+        <form id="contactForm">
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="tel"
+                id="customerPhone"
+                placeholder="Mobile Number"
+                pattern="[6-9][0-9]{9}"
+                maxlength="10"
+                title="Enter a valid 10-digit mobile number"
+                required
+            >
+
+            <select id="serviceType" required>
+                <option value="">Select Service</option>
+                <option value="Mobile Repair">Mobile Repair</option>
+                <option value="Buy Mobile">Buy Mobile</option>
+                <option value="Sell Mobile">Sell Mobile</option>
+                <option value="Trade-in">Trade-in</option>
+                <option value="Accessories">Accessories</option>
+            </select>
+
+            <input
+                type="text"
+                id="mobileModel"
+                placeholder="Mobile Brand / Model"
+                required
+            >
+
+            <textarea
+                id="message"
+                placeholder="Describe your requirement"
+                rows="4"
+            ></textarea>
+
+            <button type="submit" class="submit-btn">
+                Submit Request on WhatsApp
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("customerName").value.trim();
+    const phone = document.getElementById("customerPhone").value.trim();
+    const service = document.getElementById("serviceType").value;
+    const model = document.getElementById("mobileModel").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    // Replace with your shop's WhatsApp number:
+    const shopWhatsApp = "917030021688";
+
+    const text =
+        "ViganHarta - New Customer Enquiry\n\n" +
+        "Customer Name: " + name + "\n" +
+        "Customer Phone: " + phone + "\n" +
+        "Service: " + service + "\n" +
+        "Mobile Model: " + model + "\n" +
+        "Requirement: " + (message || "Not provided");
+
+    const whatsappURL =
+        "https://wa.me/" + shopWhatsApp +
+        "?text=" + encodeURIComponent(text);
+
+    window.location.assign(whatsappURL);
+});
+</script>

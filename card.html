@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shopping Cart | VighanHarta</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    color: #222;
+}
+
+header {
+    background: #10243a;
+    color: white;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+header h1 {
+    color: #ff9f1c;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ff9f1c;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 15px;
+}
+
+h2 {
+    color: #10243a;
+    margin-bottom: 20px;
+}
+
+.cart-box, .checkout-box {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px #00000012;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+    flex-wrap: wrap;
+}
+
+.item-info h3 {
+    color: #10243a;
+    margin-bottom: 8px;
+}
+
+.item-info p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.item-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.quantity-btn {
+    background: #e7edf3;
+    color: #10243a;
+}
+
+.remove-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.checkout-btn {
+    background: #ff9f1c;
+    color: #10243a;
+    width: 100%;
+    font-size: 17px;
+    margin-top: 15px;
+}
+
+.checkout-btn:hover {
+    background: #ed8c08;
+}
+
+.total {
+    text-align: right;
+    font-size: 23px;
+    color: #e87500;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.empty {
+    text-align: center;
+    padding: 25px;
+    line-height: 2;
+}
+
+.empty a {
+    color: #e87500;
+    font-weight: bold;
+}
+
+form label {
+    display: block;
+    margin: 14px 0 6px;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.pickup-note {
+    background: #e4f7e8;
+    color: #176b35;
+    padding: 14px;
+    border-radius: 6px;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+footer {
+    background: #10243a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    line-height: 1.8;
+}
+
+@media(max-width: 600px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .cart-item {
+        align-items: flex-start;
+    }
+
+    .total {
+        font-size: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>VighanHarta</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="used-mobile.php">Used Mobiles</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="repair.html">Repairing</a>
+ 
+    </nav>
+</header>
+
+<div class="container">
+
+    <section class="cart-box">
+        <h2>🛒 My Shopping Cart</h2>
+
+        <div id="cartItems"></div>
+
+        <div id="totalArea"></div>
+    </section>
+
+    <section class="checkout-box">
+        <h2>📋 Checkout Details</h2>
+
+        <div class="pickup-note">
+            <strong>Store Pickup Only</strong><br>
+            Order online and collect your product from our shop.
+            Home delivery is not available.
+        </div>
+
+        <form id="checkoutForm">
+
+            <label for="customerName">Full Name *</label>
+            <input
+                type="text"
+                id="customerName"
+                required
+                maxlength="100"
+                placeholder="Enter your full name">
+
+            <label for="phone">Mobile Number *</label>
+            <input
+                type="tel"
+                id="phone"
+                required
+                pattern="[6-9][0-9]{9}"
+                maxlength="10"
+                inputmode="numeric"
+                placeholder="Enter 10-digit mobile number">
+
+            <label for="address">Pickup Note (Optional)</label>
+            <textarea
+                id="address"
+                maxlength="300"
+                placeholder="Any note for the shop"></textarea>
+
+            <button type="submit" class="checkout-btn">
+                Place Demo Order
+            </button>
+
+        </form>
+    </section>
+
+</div>
+
+<footer>
+    <h3>VighanHarta Mobile Shop</h3>
+    <p>New Mobiles | Used Mobiles | Accessories | Repairing</p>
+    <p>© 2026 VighanHarta. All rights reserved.</p>
+</footer>
+
+ <script>
+const CART_KEY = "viganHartaCart";
+
+function getCart() {
+    try {
+        const cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+        return Array.isArray(cart) ? cart : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+function saveCart(cart) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+function renderCart() {
+    const cart = getCart();
+    const cartItems = document.getElementById("cartItems");
+    const totalArea = document.getElementById("totalArea");
+    const checkoutForm = document.getElementById("checkoutForm");
+
+    cartItems.innerHTML = "";
+    totalArea.innerHTML = "";
+
+    if (cart.length === 0) {
+        cartItems.innerHTML = `
+            <div class="empty">
+                <h3>Your cart is empty!</h3>
+                <p>Please select a mobile before checkout.</p>
+                <a href="used-mobiles.php">Continue Shopping</a>
+            </div>
+        `;
+
+        checkoutForm.style.display = "none";
+        return;
+    }
+
+    checkoutForm.style.display = "block";
+
+    let total = 0;
+
+    cart.forEach(function(item, index) {
+        const price = Number(item.price);
+        const quantity = Number(item.quantity);
+
+        if (!Number.isFinite(price) || !Number.isFinite(quantity) ||
+            price < 0 || quantity < 1) {
+            return;
+        }
+
+        total += price * quantity;
+
+        const row = document.createElement("div");
+        row.className = "cart-item";
+
+        const info = document.createElement("div");
+        info.className = "item-info";
+
+        const title = document.createElement("h3");
+        title.textContent = item.name;
+
+        const priceText = document.createElement("p");
+        priceText.textContent =
+            "Price: ₹" + price.toLocaleString("en-IN");
+
+        const subtotal = document.createElement("p");
+        subtotal.textContent =
+            "Subtotal: ₹" +
+            (price * quantity).toLocaleString("en-IN");
+
+        info.append(title, priceText, subtotal);
+
+        const actions = document.createElement("div");
+        actions.className = "item-actions";
+
+        const minus = document.createElement("button");
+        minus.className = "quantity-btn";
+        minus.textContent = "−";
+        minus.type = "button";
+        minus.onclick = function() {
+            changeQuantity(index, -1);
+        };
+
+        const qty = document.createElement("strong");
+        qty.textContent = quantity;
+
+        const plus = document.createElement("button");
+        plus.className = "quantity-btn";
+        plus.textContent = "+";
+        plus.type = "button";
+        plus.onclick = function() {
+            changeQuantity(index, 1);
+        };
+
+        const remove = document.createElement("button");
+        remove.className = "remove-btn";
+        remove.textContent = "Remove";
+        remove.type = "button";
+        remove.onclick = function() {
+            removeItem(index);
+        };
+
+        actions.append(minus, qty, plus, remove);
+        row.append(info, actions);
+        cartItems.appendChild(row);
+    });
+
+    const totalText = document.createElement("div");
+    totalText.className = "total";
+    totalText.textContent =
+        "Total: ₹" + total.toLocaleString("en-IN");
+
+    totalArea.appendChild(totalText);
+}
+
+function changeQuantity(index, change) {
+    const cart = getCart();
+
+    if (!cart[index]) return;
+
+    cart[index].quantity = Number(cart[index].quantity) + change;
+
+    if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+    }
+
+    saveCart(cart);
+    renderCart();
+}
+
+function removeItem(index) {
+    const cart = getCart();
+    cart.splice(index, 1);
+    saveCart(cart);
+    renderCart();
+}
+
+document.getElementById("checkoutForm").addEventListener(
+    "submit",
+    async function(event) {
+        event.preventDefault();
+
+        const cart = getCart();
+
+        if (cart.length === 0) {
+            alert("Your cart is empty.");
+            return;
+        }
+
+        const name =
+            document.getElementById("customerName").value.trim();
+
+        const phone =
+            document.getElementById("phone").value.trim();
+
+        const note =
+            document.getElementById("address").value.trim();
+
+        if (!name || !/^[6-9][0-9]{9}$/.test(phone)) {
+            alert("Please enter your name and a valid 10-digit mobile number.");
+            return;
+        }
+
+        let total = 0;
+
+        cart.forEach(function(item) {
+            total += Number(item.price) * Number(item.quantity);
+        });
+
+        const orderData = {
+    customerName: name,
+    phone: phone,
+    pickupNote: note,
+    totalAmount: total,
+    items: cart.map(function(item) {
+        return {
+            productId: Number(
+    item.productId || (
+        String(item.id).startsWith("accessory-")
+            ? String(item.id).replace("accessory-", "")
+            : item.id
+    )
+),
+
+            productName: item.name,
+            quantity: Number(item.quantity),
+            price: Number(item.price)
+        };
+    })
+};
+
+        try {
+            const response = await fetch("place_order.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(orderData)
+            });
+
+            const result = await response.json();
+
+   if (response.ok && result.success) {
+
+    localStorage.removeItem(CART_KEY);
+
+    document.getElementById("checkoutForm").reset();
+
+    document.getElementById("cartItems").innerHTML = "";
+    document.getElementById("totalArea").innerHTML = "";
+
+    document.getElementById("checkoutForm").style.display = "none";
+
+    document.getElementById("confirmedOrderId").textContent =
+        "Order ID: #" + result.orderId;
+
+    document.getElementById("confirmedTotal").textContent =
+        "Total Amount: ₹" +
+        Number(result.totalAmount).toLocaleString("en-IN");
+
+    document.getElementById("orderConfirmation").style.display = "block";
+
+    document.getElementById("orderConfirmation").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+} else {
+    alert(result.message || "Order could not be saved.");
+}         
+        } catch (error) {
+            alert("Could not connect to the server. Please check XAMPP.");
+            console.error(error);
+        }
+    }
+);
+function continueShopping() {
+    window.location.href = "used-mobile.php";
+}
+renderCart();
+</script>
+<div id="orderConfirmation"
+     style="display:none; background:#e6f7e9; padding:20px;
+            margin:20px auto; border-radius:10px;
+            color:#155724; max-width:600px;">
+
+    <h2>🎉 Order Placed Successfully!</h2>
+    <p>Thank you for choosing VighanHarta.</p>
+    <p>Your order has been received. Please visit our shop for pickup.</p>
+
+    <h3 id="confirmedOrderId"></h3>
+    <h3 id="confirmedTotal"></h3>
+
+    <button type="button" onclick="continueShopping()">
+        Continue Shopping
+    </button>
+</div>
+</body>
+</html>
